@@ -7,110 +7,128 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8d0; display: flex; justify-content: center; padding: 40px 16px; }
-.phone { width: 390px; background: #fff; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.18); border: 6px solid #1a1a1a; }
+.phone { width: 390px; background: #f2ede4; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.18); border: 6px solid #1a1a1a; }
 .notch { background: #1a1a1a; height: 26px; display: flex; align-items: center; justify-content: center; }
 .notch-pill { width: 70px; height: 8px; background: #333; border-radius: 8px; }
-.ol { height: 1px; background: #c8601a; }
-.tag { font-size: 7px; color: #c8601a; letter-spacing: 4px; margin-bottom: 8px; }
+.ol { height: 1px; background: #c8601a; display: block; }
 .real-img { width: 100%; display: block; object-fit: cover; }
 
-.hero { background: #f2ede4; padding: 20px; }
-.hero-title { font-size: 22px; font-weight: 800; color: #1c1c1c; line-height: 1.3; margin-bottom: 12px; }
-.hero-line { height: 1px; background: #c8601a; width: 32px; margin-bottom: 10px; }
-.hero-desc { font-size: 10px; color: #7a7268; line-height: 1.8; }
+/* 통일 타이틀 시스템 */
+.sec { background: #f2ede4; padding: 18px 20px 16px; }
+.sec-tag { font-size: 11px; color: #c8601a; letter-spacing: 3px; display: block; margin-bottom: 6px; }
+.sec-title { font-size: 18px; font-weight: 800; color: #1c1c1c; line-height: 1.35; }
+.sec-desc { font-size: 10px; color: #7a7268; line-height: 1.7; margin-top: 8px; }
 
-/* 棋盘格：每行固定 50/50，图片和文字交替左右 */
+/* 首屏 */
+.hero { position: relative; overflow: hidden; }
+.hero img { width: 100%; height: 520px; object-fit: cover; object-position: top; display: block; }
+.hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 38%; background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, transparent 100%); padding: 0 24px 28px; display: flex; flex-direction: column; justify-content: flex-end; }
+.hero-tag { font-size: 11px; letter-spacing: 3px; color: #fff; margin-bottom: 8px; display: block; }
+.hero-title { font-size: 26px; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 10px; }
+.hero-line { height: 1px; background: #c8601a; width: 32px; margin-bottom: 10px; }
+.hero-desc { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.9; }
+
+/* 全幅卖点 */
+.feature-full { position: relative; overflow: hidden; }
+.feature-full img { width: 100%; height: 420px; object-fit: cover; object-position: top; display: block; }
+.feature-full-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(20,15,10,0.72) 0%, transparent 100%); padding: 0 24px 28px; display: flex; flex-direction: column; justify-content: flex-end; }
+.fnum { font-size: 11px; color: #c8601a; letter-spacing: 3px; margin-bottom: 6px; }
+.ftitle { font-size: 20px; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 8px; }
+.fdesc { font-size: 11px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 8px; }
+.fline { height: 1px; width: 24px; background: #c8601a; margin-bottom: 8px; }
+.fdata { font-size: 10px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+/* 棋盘格 */
 .row { display: flex; border-bottom: 1px solid #c8601a; }
 .row.last { border-bottom: none; }
-.cell-img { flex: 0 0 55%; overflow: hidden; }
-.cell-txt { flex: 0 0 45%; background: #f2ede4; padding: 16px 14px; display: flex; flex-direction: column; justify-content: center; }
-.cell-txt.txt-left { flex: 0 0 55%; }
-.cell-img.img-right { flex: 0 0 45%; }
-/* 图在左时，图右边有线 */
-.cell-img.img-left { border-right: 1px solid #c8601a; }
-/* 文在左时，文右边有线 */
-.cell-txt.txt-left { border-right: 1px solid #c8601a; }
-
-.num { font-size: 7px; color: #c8601a; letter-spacing: 2px; margin-bottom: 5px; }
+.cell-img-l { flex: 0 0 50%; overflow: hidden; border-right: 1px solid #c8601a; }
+.cell-img-r { flex: 0 0 50%; overflow: hidden; }
+.cell-txt { flex: 0 0 50%; background: #f2ede4; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+.cell-txt.left { border-right: 1px solid #c8601a; }
+.num { font-size: 11px; color: #c8601a; letter-spacing: 3px; margin-bottom: 5px; }
 .gtitle { font-size: 14px; font-weight: 800; color: #1c1c1c; line-height: 1.25; margin-bottom: 7px; }
-.gdesc { font-size: 8px; color: #7a7268; line-height: 1.6; margin-bottom: 8px; }
+.gdesc { font-size: 10px; color: #7a7268; line-height: 1.6; margin-bottom: 8px; }
 .gline { height: 1px; width: 24px; background: #c8601a; margin-bottom: 8px; }
-.gdata { font-size: 7px; color: #aaa; line-height: 1.5; }
+.gdata { font-size: 10px; color: #9a9088; line-height: 1.5; }
 
-.model-header { background: #f2ede4; padding: 18px 20px 14px; }
-.model-header .title { font-size: 18px; font-weight: 800; color: #1c1c1c; }
+/* 双栏图片 */
 .model-duo { display: flex; }
 .model-duo .left { flex: 1; border-right: 1px solid #c8601a; overflow: hidden; }
 .model-duo .right { flex: 1; overflow: hidden; }
 
-.color-label { background: #f2ede4; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
-.color-label .name { font-size: 12px; font-weight: 700; color: #1c1c1c; }
-.color-label .hint { font-size: 9px; color: #9a9088; }
+/* 表格通用 */
+.tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.tbl thead td { font-size: 12px; font-weight: 700; color: #1c1c1c; text-align: center; padding: 10px 0; border-bottom: 1px solid rgba(200,96,26,.2); }
+.tbl thead td:first-child { font-size: 10px; color: #7a7268; font-weight: 400; text-align: left; padding-left: 10px; }
+.tbl tbody td { font-size: 11px; color: #1c1c1c; text-align: center; padding: 10px 0; border-bottom: 1px solid rgba(200,96,26,.1); }
+.tbl tbody td:first-child { font-size: 10px; color: #7a7268; text-align: left; padding-left: 10px; line-height: 1.4; }
+.tbl tr:nth-child(even) { background: rgba(200,96,26,0.07); }
+.tbl-head-bg { background: rgba(200,96,26,0.07); }
+.tbl-note { font-size: 9px; color: #c8601a; margin-top: 10px; }
+.tbl-sub { font-size: 11px; font-weight: 700; color: #1c1c1c; margin: 0 0 10px; }
 
-.size-block { background: #f2ede4; padding: 20px; }
-.size-block h3 { font-size: 16px; font-weight: 800; color: #1c1c1c; margin-bottom: 14px; }
-.size-block table { width: 100%; border-collapse: collapse; }
-.size-block th { font-size: 8px; padding: 0 0 8px; text-align: left; color: #1c1c1c; font-weight: 700; border-bottom: 1.5px solid #1c1c1c; }
-.size-block td { font-size: 9px; padding: 8px 0; border-bottom: 1px solid rgba(200,96,26,.15); color: #7a7268; }
-.size-block td:first-child { color: #1c1c1c; font-weight: 700; }
-.size-note { font-size: 8px; color: #c8601a; margin-top: 10px; }
+/* 色卡 */
+.color-card { display: flex; align-items: center; gap: 12px; background: rgba(242,237,228,0.18); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(242,237,228,0.3); padding: 12px 14px; }
+.color-dot { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; }
+.color-name { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.color-hint { font-size: 9px; color: rgba(255,255,255,0.7); }
+.color-hex { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
 
-.info-block { background: #f2ede4; padding: 20px 20px 32px; }
-.info-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(200,96,26,.15); }
-.info-row .key { font-size: 9px; color: #9a9088; }
-.info-row .val { font-size: 9px; color: #1c1c1c; font-weight: 500; }
-.brand-footer { margin-top: 28px; display: flex; align-items: center; gap: 10px; }
-.brand-line { height: 1px; flex: 1; background: #c8601a; }
-.brand-name { font-size: 8px; color: #c8601a; letter-spacing: 4px; }
+/* 基础信息 */
+.info-tbl { width: 100%; border-collapse: collapse; }
+.info-tbl td { padding: 10px 0 10px 10px; border-bottom: 1px solid rgba(200,96,26,.1); }
+.info-tbl td:first-child { font-size: 10px; color: #7a7268; width: 36%; }
+.info-tbl td:last-child { font-size: 11px; color: #1c1c1c; }
+.info-tbl tr:nth-child(even) { background: rgba(200,96,26,0.07); }
 </style>
 </head>
 <body>
 <div class="phone">
   <div class="notch"><div class="notch-pill"></div></div>
 
-  <div class="ol"></div>
+  <!-- 首屏 -->
   <div class="hero">
-    <div class="tag">INNERWEAR · 美型防滑抹胸</div>
-    <div class="hero-title">无感，但稳。<br>贴合，但聚。</div>
-    <div class="hero-line"></div>
-    <div class="hero-desc">可拆卸肩带解锁7种穿法<br>一件抹胸，穿进你的每一天</div>
-  </div>
-  <div class="ol"></div>
-  <img class="real-img" src="img2.jpg" style="height:460px;object-position:top">
-  <div class="ol"></div>
-
-  <!-- 01：图左 文右 矮195 -->
-  <div class="row">
-    <div class="cell-img img-left">
-      <img class="real-img" src="img1.jpg" style="height:195px;object-position:top">
-    </div>
-    <div class="cell-txt">
-      <div class="num">01</div>
-      <div class="gtitle">无感，是<br>最高级的贴合</div>
-      <div class="gdesc">贴着皮肤，感受不到边缘</div>
-      <div class="gline"></div>
-      <div class="gdata">无缝切割工艺，零压痕零勒感</div>
+    <img src="img2.jpg">
+    <div class="hero-overlay">
+      <span class="hero-tag">美型防滑抹胸</span>
+      <div class="hero-title">无感，但稳。<br>贴合，但聚。</div>
+      <div class="hero-line"></div>
+      <div class="hero-desc">跑跳拉伸，稳稳不移位<br>可拆卸肩带解锁7种穿法</div>
     </div>
   </div>
+  <div class="ol"></div>
 
-  <!-- 02：文左 图右 高240 -->
+  <!-- 01 全幅 -->
+  <div class="feature-full">
+    <img src="img13.jpg" style="object-position:top;transform:scale(1.1);transform-origin:top center;">
+    <div class="feature-full-overlay">
+      <div class="fnum">01</div>
+      <div class="ftitle">动起来<br>也不跑</div>
+      <div class="fdesc">跑步、拉伸，原位不动</div>
+      <div class="fline"></div>
+      <div class="fdata">整片防滑内里，无硅胶，出汗也不痒</div>
+    </div>
+  </div>
+  <div class="ol"></div>
+
+  <!-- 02 文左图右 -->
   <div class="row">
-    <div class="cell-txt txt-left">
+    <div class="cell-txt left">
       <div class="num">02</div>
-      <div class="gtitle">动起来<br>也不跑</div>
-      <div class="gdesc">跑步、拉伸，原位不动</div>
+      <div class="gtitle">衣柜在变<br>它不变</div>
+      <div class="gdesc">今天抹胸，明天吊带</div>
       <div class="gline"></div>
-      <div class="gdata">整片防滑内里，无硅胶，出汗也不痒</div>
+      <div class="gdata">可拆卸肩带，7种穿法随心换</div>
     </div>
-    <div class="cell-img img-right">
-      <img class="real-img" src="img13.jpg" style="height:240px;object-position:top;transform:scale(1.3);transform-origin:top center;">
+    <div class="cell-img-r">
+      <img class="real-img" src="img5.jpg" style="height:180px;object-position:top">
     </div>
   </div>
 
-  <!-- 03：图左 文右 矮195 -->
+  <!-- 03 图左文右 -->
   <div class="row">
-    <div class="cell-img img-left">
-      <img class="real-img" src="img4.jpg" style="height:195px;object-position:top;transform:scale(1.7);transform-origin:top center;">
+    <div class="cell-img-l">
+      <img class="real-img" src="img4.jpg" style="height:180px;object-position:top;transform:scale(1.7);transform-origin:top center;">
     </div>
     <div class="cell-txt">
       <div class="num">03</div>
@@ -121,24 +139,24 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
     </div>
   </div>
 
-  <!-- 04：文左 图右 高240 -->
+  <!-- 04 文左图右 -->
   <div class="row">
-    <div class="cell-txt txt-left">
+    <div class="cell-txt left">
       <div class="num">04</div>
-      <div class="gtitle">一件穿<br>整个夏天</div>
-      <div class="gdesc">衣柜在变，它不用换</div>
+      <div class="gtitle">无感，才是<br>贴合本来的样子</div>
+      <div class="gdesc">贴着皮肤，感受不到边缘</div>
       <div class="gline"></div>
-      <div class="gdata">7种穿法 · 4种核心款</div>
+      <div class="gdata">无缝切割工艺，零压痕零勒感<br>后背高弹，拉伸贴合不束缚</div>
     </div>
-    <div class="cell-img img-right">
-      <img class="real-img" src="img5.jpg" style="height:240px;object-position:top">
+    <div class="cell-img-r">
+      <img class="real-img" src="img1.jpg" style="height:180px;object-position:top">
     </div>
   </div>
 
-  <!-- 05：图左 文右 矮195 -->
-  <div class="row">
-    <div class="cell-img img-left">
-      <img class="real-img" src="img6.jpg" style="height:195px;object-position:center;transform:scale(1.25);transform-origin:center;">
+  <!-- 05 图左文右 -->
+  <div class="row last">
+    <div class="cell-img-l">
+      <img class="real-img" src="img6.jpg" style="height:180px;object-position:center;transform:scale(1.25);transform-origin:center;">
     </div>
     <div class="cell-txt">
       <div class="num">05</div>
@@ -148,26 +166,26 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
       <div class="gdata">高透气面料，5A级抑菌，敏感肌可穿</div>
     </div>
   </div>
+  <div class="ol"></div>
 
-  <!-- 06：文左 图右 高240 no-border -->
-  <div class="row last">
-    <div class="cell-txt txt-left">
-      <div class="num">06</div>
-      <div class="gtitle">白T也<br>不透</div>
-      <div class="gdesc">不用再烦内衣颜色这件事</div>
-      <div class="gline"></div>
-      <div class="gdata">专为亚洲肤色调色，自然融入皮肤底色</div>
-    </div>
-    <div class="cell-img">
-      <img class="real-img" src="img3.jpg" style="height:240px;object-position:top">
+  <!-- 06 全幅 -->
+  <div class="feature-full">
+    <img src="img1.jpg" style="object-position:top;">
+    <div class="feature-full-overlay">
+      <div class="fnum">06</div>
+      <div class="ftitle">白T也<br>不透</div>
+      <div class="fdesc">不用再烦内衣颜色这件事</div>
+      <div class="fline"></div>
+      <div class="fdata">专为亚洲肤色调色，自然融入皮肤底色</div>
     </div>
   </div>
   <div class="ol"></div>
 
-  <!-- 模特展示 -->
-  <div class="model-header">
-    <div class="tag">HOW IT FITS · 上身效果</div>
-    <div class="title">贴合每一处<br>真实的你</div>
+  <!-- 上身效果 -->
+  <div class="sec">
+    <span class="sec-tag">上身效果</span>
+    <div class="sec-title">贴合每一处<br>真实的你</div>
+    <div class="sec-desc">后背高弹复合面料，拉伸达2倍，多身材多动作全贴合</div>
   </div>
   <div class="ol"></div>
   <img class="real-img" src="img7.jpg" style="height:480px;object-position:top">
@@ -176,56 +194,112 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
     <div class="left"><img class="real-img" src="img11.jpg" style="height:240px;object-position:top"></div>
     <div class="right"><img class="real-img" src="img10.jpg" style="height:240px;object-position:center;transform:scale(1.4);transform-origin:center;"></div>
   </div>
-
-  <!-- 颜色 -->
   <div class="ol"></div>
-  <div class="model-header">
-    <div class="tag">COLOURS · 颜色选择</div>
-    <div class="title">选择你的颜色</div>
+
+  <!-- 颜色选择 -->
+  <div class="sec">
+    <span class="sec-tag">颜色选择</span>
+    <div class="sec-title">选择你的颜色</div>
   </div>
   <div class="ol"></div>
-  <div class="color-label"><span class="name">裸感米</span><span class="hint">百搭隐形</span></div>
-  <div class="ol"></div>
-  <div style="height:80px;background:#dac9b4"></div>
-  <div class="ol"></div>
-  <div class="color-label"><span class="name">哑光黑</span><span class="hint">干净利落</span></div>
-  <div class="ol"></div>
-  <div style="height:80px;background:#282420"></div>
+  <div style="position:relative;overflow:hidden;height:480px;">
+    <img class="real-img" src="img1.jpg" style="height:480px;object-fit:cover;object-position:top;">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top, rgba(20,15,10,0.72) 0%, transparent 100%);"></div>
+    <div style="position:absolute;bottom:32px;left:20px;right:20px;display:flex;flex-direction:column;gap:10px;">
+      <div class="color-card">
+        <div class="color-dot" style="background:#dac9b4;border:1px solid rgba(255,255,255,0.3);"></div>
+        <div style="flex:1;">
+          <div class="color-name">裸感肤</div>
+          <div class="color-hint">百搭隐形 · 亚洲肤色专属调色</div>
+        </div>
+        <div class="color-hex">#dac9b4</div>
+      </div>
+      <div class="color-card">
+        <div class="color-dot" style="background:#282420;border:1px solid rgba(255,255,255,0.15);"></div>
+        <div style="flex:1;">
+          <div class="color-name">哑光黑</div>
+          <div class="color-hint">干净利落 · 百搭百配</div>
+        </div>
+        <div class="color-hex">#282420</div>
+      </div>
+    </div>
+  </div>
   <div class="ol"></div>
 
   <!-- 尺码 -->
-  <img class="real-img" src="img2.jpg" style="height:200px;object-position:top">
-  <div class="ol"></div>
-  <div class="size-block">
-    <div class="tag">SIZE GUIDE · 尺码指南</div>
-    <h3>找到你的尺码</h3>
-    <table>
-      <thead><tr><th>尺码</th><th>胸围 cm</th><th>体重 kg</th><th>罩杯</th></tr></thead>
+  <div class="sec">
+    <span class="sec-tag">尺码指南</span>
+    <div class="sec-title">找到你的尺码</div>
+  </div>
+  <div style="background:#f2ede4;padding:0 20px 24px;">
+    <div class="tbl-sub" style="padding-top:16px;">罩杯对照</div>
+    <table class="tbl">
+      <thead class="tbl-head-bg">
+        <tr>
+          <td>上围－下围</td>
+          <td>A</td><td>B</td><td>C</td><td>D</td>
+        </tr>
+      </thead>
       <tbody>
-        <tr><td>S</td><td>72–78</td><td>45–52</td><td>A–B</td></tr>
-        <tr><td>M</td><td>78–84</td><td>52–58</td><td>B–C</td></tr>
-        <tr><td>L</td><td>84–90</td><td>58–65</td><td>C–D</td></tr>
-        <tr><td>XL</td><td>90–96</td><td>65–72</td><td>D+</td></tr>
+        <tr>
+          <td>差值 cm</td>
+          <td>7.5–10</td><td>10–12.5</td><td>12.5–15</td><td>15–17.5</td>
+        </tr>
       </tbody>
     </table>
-    <div class="size-note">* 丰胸体型建议大一码</div>
-  </div>
+    <div class="tbl-note" style="margin-bottom:20px;">* 例：上胸围 90cm － 下胸围 81cm = 9cm，对应 A 罩杯</div>
 
-  <!-- 产品信息 -->
+    <div class="tbl-sub">尺码 · 单位 cm</div>
+    <table class="tbl">
+      <thead class="tbl-head-bg">
+        <tr>
+          <td></td>
+          <td>S</td><td>S+</td><td>M</td><td>M+</td><td>L</td><td>XL</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>建议<br>胸围</td>
+          <td>80–84</td><td>85–89</td><td>85–89</td><td>90–94</td><td>90–94</td><td>95–99</td>
+        </tr>
+        <tr>
+          <td>建议<br>下胸围</td>
+          <td>68–72</td><td>68–72</td><td>73–77</td><td>73–77</td><td>78–82</td><td>83–87</td>
+        </tr>
+        <tr>
+          <td>日常<br>文胸</td>
+          <td style="line-height:1.8;">70A<br>70B</td>
+          <td style="line-height:1.8;">70C<br>70D</td>
+          <td style="line-height:1.8;">75A<br>75B</td>
+          <td style="line-height:1.8;">75C<br>75D</td>
+          <td style="line-height:1.8;">80A<br>80B</td>
+          <td style="line-height:1.8;">85A<br>85B</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tbl-note">* 丰胸体型建议大一码</div>
+  </div>
   <div class="ol"></div>
-  <img class="real-img" src="img1.jpg" style="height:200px;object-position:center">
-  <div class="ol"></div>
-  <div class="info-block">
-    <div class="tag">MATERIAL &amp; CARE · 产品信息</div>
-    <div class="info-row"><span class="key">材质</span><span class="val">锦纶 · 氨纶</span></div>
-    <div class="info-row"><span class="key">面料亮点</span><span class="val">轻如蝉翼，弹力持久不变形</span></div>
-    <div class="info-row"><span class="key">洗涤</span><span class="val">30°C手洗 · 平铺晾干</span></div>
-    <div class="info-row"><span class="key">产地</span><span class="val">中国大陆</span></div>
-    <div class="brand-footer">
-      <div class="brand-line"></div>
-      <div class="brand-name">BRAND</div>
-      <div class="brand-line"></div>
-    </div>
+
+  <!-- 基础信息 -->
+  <div class="sec">
+    <span class="sec-tag">产品详情</span>
+    <div class="sec-title">基础信息</div>
+  </div>
+  <div style="background:#f2ede4;padding:0 20px 32px;">
+    <table class="info-tbl">
+      <tr><td>产品名称</td><td>美型防滑抹胸</td></tr>
+      <tr><td>面料</td><td>69% 锦纶 · 31% 氨纶</td></tr>
+      <tr><td>罩杯里料</td><td>51% 锦纶 · 49% 氨纶</td></tr>
+      <tr><td>背扣</td><td>无</td></tr>
+      <tr><td>肩带</td><td>可调节 · 可脱卸</td></tr>
+      <tr><td>杯型</td><td>抹胸</td></tr>
+      <tr><td>杯垫</td><td>固定杯</td></tr>
+      <tr><td>杯垫数值</td><td>薄处 1mm · 厚处 7.5mm</td></tr>
+      <tr><td>尺码</td><td>S · S+ · M · M+ · L · XL</td></tr>
+      <tr><td>洗涤</td><td>30°C手洗 · 平铺晾干</td></tr>
+      <tr><td>产地</td><td>中国</td></tr>
+    </table>
   </div>
 
 </div>
