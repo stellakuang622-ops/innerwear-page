@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美型防滑抹胸 · 详情页</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8d0; display: flex; justify-content: center; padding: 40px 16px; }
+.phone { width: 390px; background: #f2ede4; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.18); border: 6px solid #1a1a1a; }
+.notch { background: #1a1a1a; height: 26px; display: flex; align-items: center; justify-content: center; }
+.notch-pill { width: 70px; height: 8px; background: #333; border-radius: 8px; }
+.ol { height: 1px; background: #c8601a; display: block; }
+.real-img { width: 100%; display: block; object-fit: cover; }
+.sec { background: #f2ede4; padding: 18px 20px 16px; }
+.sec-tag { font-size: 11px; color: #c8601a; letter-spacing: 3px; display: block; margin-bottom: 6px; }
+.sec-title { font-size: 18px; font-weight: 800; color: #1c1c1c; line-height: 1.35; }
+.hero { position: relative; overflow: hidden; }
+.hero img { width: 100%; height: 520px; object-fit: cover; object-position: top; display: block; }
+.hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: calc(38% + 15px); background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, transparent 100%); padding: 0 24px 28px; display: flex; flex-direction: column; justify-content: flex-end; }
+.hero-tag { font-size: 17px; letter-spacing: 3px; color: #fff; font-weight: 900; margin-bottom: 8px; display: inline-block; background: #c8601a; padding: 3px 10px; align-self: flex-start; }
+.hero-title { font-size: 26px; font-weight: 800; color: #fff; line-height: 1.3; margin-bottom: 10px; }
+.hero-line { height: 1px; background: #c8601a; width: 32px; margin-bottom: 10px; }
+.hero-desc { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.9; }
+.feature-full { position: relative; overflow: hidden; }
+.feature-full > img { width: 100%; height: 460px; object-fit: cover; object-position: top; display: block; }
+.feature-full-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(20,15,10,0.72) 0%, transparent 100%); padding: 28px 24px; display: flex; flex-direction: column; justify-content: flex-end; }
+.fnum { font-size: 11px; color: #c8601a; letter-spacing: 3px; margin-bottom: 6px; }
+.ftitle-sm { font-size: 26px; font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 10px; }
+.fdesc { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 10px; }
+.fline { width: 24px; height: 1px; background: #c8601a; margin-bottom: 10px; flex-shrink: 0; }
+.fdata { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.row { display: flex; border-bottom: 1px solid #c8601a; }
+.row.last { border-bottom: none; }
+.cell-img-l { flex: 0 0 55%; overflow: hidden; border-right: 1px solid #c8601a; }
+.cell-img-r { flex: 0 0 55%; overflow: hidden; }
+.cell-txt { flex: 0 0 45%; background: #f2ede4; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+.cell-txt.left { border-right: 1px solid #c8601a; }
+.num { font-size: 11px; color: #c8601a; letter-spacing: 3px; margin-bottom: 5px; }
+.gtitle { font-size: 17px; font-weight: 800; color: #1c1c1c; line-height: 1.25; margin-bottom: 7px; }
+.gdesc { font-size: 13px; color: #7a7268; line-height: 1.6; margin-bottom: 8px; }
+.gline { height: 1px; width: 24px; background: #c8601a; margin-bottom: 8px; }
+.gdata { font-size: 13px; color: #9a9088; line-height: 1.5; }
+.slideshow { position: relative; width: 100%; height: 230px; overflow: hidden; }
+.slideshow-track { display: flex; height: 100%; }
+.slideshow-track .slide { height: 100%; overflow: hidden; flex-shrink: 0; }
+.slideshow-track .slide img { width: 220%; height: 220%; object-fit: cover; object-position: top center; margin-left: -45%; transform: translate(-7%, -6%); }
+.tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.tbl thead td { font-size: 10px; font-weight: 700; color: #1c1c1c; text-align: center; padding: 10px 0; border-bottom: 1px solid rgba(200,96,26,.2); }
+.tbl thead td:first-child { font-size: 10px; color: #7a7268; font-weight: 400; text-align: left; padding-left: 10px; }
+.tbl tbody td { font-size: 11px; color: #1c1c1c; text-align: center; padding: 10px 0; border-bottom: 1px solid rgba(200,96,26,.1); }
+.tbl tbody td:first-child { font-size: 10px; color: #7a7268; text-align: left; padding-left: 10px; line-height: 1.4; }
+.tbl tr:nth-child(even) { background: rgba(200,96,26,0.07); }
+.tbl-head-bg { background: rgba(200,96,26,0.07); }
+.tbl-note { font-size: 9px; color: #c8601a; margin-top: 10px; }
+.tbl-sub { font-size: 11px; font-weight: 700; color: #1c1c1c; margin: 0 0 10px; }
+.color-card { display: flex; align-items: center; gap: 12px; background: rgba(242,237,228,0.18); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(242,237,228,0.3); padding: 12px 14px; }
+.color-dot { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; }
+.color-name { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+.color-hint { font-size: 9px; color: rgba(255,255,255,0.7); }
+.color-hex { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+.info-tbl { width: 100%; border-collapse: collapse; }
+.info-tbl td { padding: 10px 0 10px 10px; border-bottom: 1px solid rgba(200,96,26,.1); }
+.info-tbl td:first-child { font-size: 10px; color: #7a7268; width: 36%; }
+.info-tbl td:last-child { font-size: 11px; color: #1c1c1c; }
+.info-tbl tr:nth-child(even) { background: rgba(200,96,26,0.07); }
+
+/* 面料板块 */
+.fabric-block { position: relative; height: 260px; overflow: hidden; }
+.fabric-block img { position: absolute; top: 0; left: 0; width: 100%; height: 260px; object-fit: cover; object-position: center; transform: scale(1.3) translateY(-6%); transform-origin: center; display: block; }
+.fabric-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(20,15,10,0.52) 0%, rgba(20,15,10,0) 100%); padding: 16px 24px 20px; height: 105px; display: flex; flex-direction: column; justify-content: flex-end; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="notch"><div class="notch-pill"></div></div>
+  <!-- 首屏 -->
+  <div class="hero">
+    <img src="img2.jpg">
+    <div class="hero-overlay">
+      <span class="hero-tag" style="font-size:19px;">美型防滑抹胸</span>
+      <div class="hero-title">无感，但稳。<br>贴合，但聚。</div>
+      <div class="hero-line"></div>
+      <div class="hero-desc">跑跳拉伸，稳稳不移位<br>可拆卸肩带解锁7种穿法</div>
+    </div>
+  </div>
+  <div class="ol"></div>
+
+  <!-- 01 全幅 -->
+  <div style="position:relative;height:460px;overflow:hidden;">
+    <img src="img19.jpg" style="position:absolute;top:-80px;left:0;width:130%;height:130%;object-fit:cover;object-position:top;display:block;">
+    <div class="feature-full-overlay" style="height:38%;">
+      <div class="fnum">01</div>
+      <div class="ftitle-sm">动起来<br>也不跑</div>
+      <div class="fdesc">整片防滑内里，无硅胶，出汗也不痒</div>
+      <div class="fline"></div>
+      <div class="fdata">跑步、拉伸，原位不动</div>
+    </div>
+  </div>
+  <div class="ol"></div>
+
+  <!-- 面料科技板块 -->
+  <div class="fabric-block">
+    <img src="img20.jpg">
+    <div class="fabric-overlay">
+      <div style="font-size:11px;color:#c8601a;letter-spacing:3px;margin-bottom:8px;">悬浮氨纶内里</div>
+      <div style="width:24px;height:1px;background:#c8601a;margin-bottom:10px;flex-shrink:0;"></div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:4px;">上千个微小氨纶凸点，贴住皮肤却感受不到。</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;">不靠硅胶粘住你，靠结构稳住你。</div>
+    </div>
+  </div>
+  <div class="ol"></div>
+
+  <!-- 02 文左图右 -->
+  <div class="row">
+    <div class="cell-txt left">
+      <div class="num">02</div>
+      <div class="gtitle"><span style="font-size:23px;color:#c8601a;">7</span>种穿法，<br>随心换</div>
+      <div class="gdesc">今天抹胸，明天吊带</div>
+      <div class="gline"></div>
+      <div class="gdata">可拆卸肩带，<br>怎么搭都行</div>
+    </div>
+    <div class="cell-img-r">
+      <div class="slideshow">
+        <div class="slideshow-track">
+          <div class="slide"><img src="look1.jpg"></div>
+          <div class="slide"><img src="look2.jpg"></div>
+          <div class="slide"><img src="look3.jpg"></div>
+          <div class="slide"><img src="look4.jpg"></div>
+          <div class="slide"><img src="look5.jpg"></div>
+          <div class="slide"><img src="look6.jpg"></div>
+          <div class="slide"><img src="look7.jpg"></div>
+          <div class="slide"><img src="look1.jpg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 图左文右 -->
+  <div class="row">
+    <div class="cell-img-l">
+      <img class="real-img" src="img15-1.jpg" style="height:170px;object-position:center;transform:scale(2.3) translateY(8%);transform-origin:center;">
+    </div>
+    <div class="cell-txt">
+      <div class="num">03</div>
+      <div class="gtitle">自然饱满<br>不用努力</div>
+      <div class="gdesc">副乳收进去，<br>该有的都有</div>
+      <div class="gline"></div>
+      <div class="gdata">侧收环绕模杯，<br>一体成型</div>
+    </div>
+  </div>
+
+  <!-- 04 文左图右 -->
+  <div class="row">
+    <div class="cell-txt left">
+      <div class="num">04</div>
+      <div class="gtitle">无感，才是<br>贴合本来的样子</div>
+      <div class="gdesc">贴着皮肤，<br>感受不到边缘</div>
+      <div class="gline"></div>
+      <div class="gdata">无缝切割工艺，<br>零压痕零勒感</div>
+    </div>
+    <div class="cell-img-r" style="position:relative;">
+      <img class="real-img" src="img3.jpg" style="height:220px;object-position:center;transform:scale(1.6) translate(8%,-7%);transform-origin:center;">
+      <div style="position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,rgba(20,15,10,0.65) 0%,transparent 100%);"></div>
+      <div style="position:absolute;bottom:22px;left:12px;">
+        <div style="font-size:13px;font-weight:800;color:#fff;line-height:1.5;">后背高弹面料</div>
+        <div style="font-size:17px;font-weight:800;color:#fff;line-height:1.2;"><span style="font-size:21px;color:#fff;">2</span>倍延展</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 图左文右 -->
+  <div style="display:flex;border-bottom:none;">
+    <div style="flex:0 0 55%;height:180px;overflow:hidden;border-right:1px solid #c8601a;position:relative;">
+      <img src="img18.jpg" style="width:100%;height:180px;object-fit:cover;transform:scale(1.5);transform-origin:center;margin-top:8px;display:block;">
+      <div style="position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(to top,rgba(20,15,10,0.40) 0%,rgba(20,15,10,0) 100%);"></div>
+      <div style="position:absolute;bottom:12px;left:12px;">
+        <div style="font-size:17px;font-weight:800;color:#fff;line-height:1.2;white-space:nowrap;"><span style="font-size:21px;">5A</span>级抑菌</div>
+      </div>
+    </div>
+    <div style="flex:0 0 45%;background:#f2ede4;padding:14px 16px;display:flex;flex-direction:column;justify-content:center;">
+      <div class="num">05</div>
+      <div class="gtitle">热天也不想脱</div>
+      <div class="gdesc">触肤凉，<br>久穿不闷不出汗</div>
+      <div class="gline"></div>
+      <div class="gdata">高透气面料，<br>敏感肌可穿</div>
+    </div>
+  </div>
+  <div class="ol"></div>
+
+  <!-- 06 全幅 -->
+  <div class="feature-full">
+    <img src="img17.jpg" style="object-position:top;">
+    <div class="feature-full-overlay" style="height:35%;">
+      <div class="fnum">06</div>
+      <div class="ftitle-sm">白T也不透</div>
+      <div class="fdesc">不用再烦内衣颜色这件事</div>
+      <div class="fline"></div>
+      <div class="fdata">专为亚洲肤色调色，自然融入皮肤底色</div>
+    </div>
+  </div>
+  <div class="ol"></div>
+
+  <!-- 上身效果 -->
+  <div class="sec">
+    <span class="sec-tag">上身效果</span>
+    <div class="sec-title">贴合你的身体</div>
+  </div>
+  <div class="ol"></div>
+  <div style="overflow:hidden;height:480px;">
+    <img class="real-img" src="img7.jpg" style="height:480px;object-fit:cover;transform:scale(1.25) translateY(10%);transform-origin:center;">
+  </div>
+  <div class="ol"></div>
+  <div style="overflow:hidden;height:480px;">
+    <img class="real-img" src="img11.jpg" style="height:480px;object-position:top;">
+  </div>
+  <div class="ol"></div>
+  <div style="overflow:hidden;height:480px;">
+    <img class="real-img" src="img14.jpg" style="height:480px;object-position:top;">
+  </div>
+  <div class="ol"></div>
+
+  <!-- 颜色选择 -->
+  <div class="sec">
+    <span class="sec-tag">颜色选择</span>
+    <div class="sec-title">选择你的颜色</div>
+  </div>
+  <div class="ol"></div>
+  <div style="position:relative;overflow:hidden;height:480px;">
+    <img class="real-img" src="img4.jpg" style="position:absolute;top:0;left:0;height:480px;object-fit:cover;object-position:top;z-index:0;">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,rgba(20,15,10,0.72) 0%,transparent 100%);z-index:1;"></div>
+    <div style="position:absolute;bottom:32px;left:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:2;">
+      <div class="color-card">
+        <div class="color-dot" style="background:#dac9b4;border:1px solid rgba(255,255,255,0.3);"></div>
+        <div style="flex:1;">
+          <div class="color-name">裸感肤</div>
+          <div class="color-hint">百搭隐形 · 亚洲肤色专属调色</div>
+        </div>
+        <div class="color-hex">#dac9b4</div>
+      </div>
+      <div class="color-card">
+        <div class="color-dot" style="background:#282420;border:1px solid rgba(255,255,255,0.15);"></div>
+        <div style="flex:1;">
+          <div class="color-name">哑光黑</div>
+          <div class="color-hint">干净利落 · 百搭百配</div>
+        </div>
+        <div class="color-hex">#282420</div>
+      </div>
+    </div>
+  </div>
+  <div class="ol"></div>
+
+  <!-- 尺码 -->
+  <div class="sec">
+    <span class="sec-tag">尺码指南</span>
+    <div class="sec-title">找到你的尺码</div>
+  </div>
+  <div style="background:#f2ede4;padding:0 20px 24px;">
+    <div class="tbl-sub" style="padding-top:16px;">罩杯对照</div>
+    <table class="tbl">
+      <thead class="tbl-head-bg">
+        <tr><td>上围－下围</td><td>A</td><td>B</td><td>C</td><td>D</td></tr>
+      </thead>
+      <tbody>
+        <tr><td>差值 cm</td><td>7.5–10</td><td>10–12.5</td><td>12.5–15</td><td>15–17.5</td></tr>
+      </tbody>
+    </table>
+    <div class="tbl-note" style="margin-bottom:20px;">* 例：上胸围 90cm － 下胸围 81cm = 9cm，对应 A 罩杯</div>
+    <div class="tbl-sub">尺码 · 单位 cm</div>
+    <table class="tbl">
+      <thead class="tbl-head-bg">
+        <tr><td></td><td>S</td><td>S+</td><td>M</td><td>M+</td><td>L</td><td>XL</td></tr>
+      </thead>
+      <tbody>
+        <tr><td>建议<br>胸围</td><td>80–84</td><td>85–89</td><td>85–89</td><td>90–94</td><td>90–94</td><td>95–99</td></tr>
+        <tr><td>建议<br>下胸围</td><td>68–72</td><td>68–72</td><td>73–77</td><td>73–77</td><td>78–82</td><td>83–87</td></tr>
+        <tr>
+          <td>日常<br>文胸</td>
+          <td style="line-height:1.8;">70A<br>70B</td>
+          <td style="line-height:1.8;">70C<br>70D</td>
+          <td style="line-height:1.8;">75A<br>75B</td>
+          <td style="line-height:1.8;">75C<br>75D</td>
+          <td style="line-height:1.8;">80A<br>80B</td>
+          <td style="line-height:1.8;">85A<br>85B</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tbl-note">* 丰胸体型建议大一码</div>
+  </div>
+  <div class="ol"></div>
+
+  <!-- 基础信息 -->
+  <div class="sec">
+    <span class="sec-tag">产品详情</span>
+    <div class="sec-title">基础信息</div>
+  </div>
+  <div style="background:#f2ede4;padding:0 20px 32px;">
+    <table class="info-tbl">
+      <tr><td>产品名称</td><td>美型防滑抹胸</td></tr>
+      <tr><td>面料</td><td>69% 锦纶 · 31% 氨纶</td></tr>
+      <tr><td>罩杯里料</td><td>51% 锦纶 · 49% 氨纶</td></tr>
+      <tr><td>背扣</td><td>无</td></tr>
+      <tr><td>肩带</td><td>可调节 · 可脱卸</td></tr>
+      <tr><td>杯型</td><td>抹胸</td></tr>
+      <tr><td>杯垫</td><td>固定杯</td></tr>
+      <tr><td>杯垫数值</td><td>薄处 1mm · 厚处 7.5mm</td></tr>
+      <tr><td>尺码</td><td>S · S+ · M · M+ · L · XL</td></tr>
+      <tr><td>洗涤</td><td>30°C手洗 · 平铺晾干</td></tr>
+      <tr><td>产地</td><td>中国</td></tr>
+    </table>
+  </div>
+</div>
+<script>
+  const track = document.querySelector('.slideshow-track');
+  if (track) {
+    const total = 7;
+    const slideW = 100 / (total + 1);
+    track.style.width = `${(total + 1) * 100}%`;
+    track.querySelectorAll('.slide').forEach(s => s.style.width = `${slideW}%`);
+    let cur = 0;
+    setInterval(() => {
+      cur++;
+      track.style.transition = 'transform 0.6s cubic-bezier(0.4,0,0.2,1)';
+      track.style.transform = `translateX(-${cur * slideW}%)`;
+      if (cur === total) {
+        setTimeout(() => {
+          track.style.transition = 'none';
+          track.style.transform = 'translateX(0)';
+          cur = 0;
+        }, 650);
+      }
+    }, 1500);
+  }
+</script>
+</body>
+</html>
