@@ -44,7 +44,7 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
 .slideshow { position: relative; width: 100%; height: 230px; overflow: hidden; }
 .slideshow-track { display: flex; height: 100%; }
 .slideshow-track .slide { height: 100%; overflow: hidden; flex-shrink: 0; }
-.slideshow-track .slide img { width: 190%; height: 190%; object-fit: cover; object-position: top center; margin-left: -45%; }
+.slideshow-track .slide img { width: 220%; height: 220%; object-fit: cover; object-position: top center; margin-left: -45%; transform: translate(-7%, -6%); }
 .tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
 .tbl thead td { font-size: 10px; font-weight: 700; color: #1c1c1c; text-align: center; padding: 10px 0; border-bottom: 1px solid rgba(200,96,26,.2); }
 .tbl thead td:first-child { font-size: 10px; color: #7a7268; font-weight: 400; text-align: left; padding-left: 10px; }
@@ -64,6 +64,11 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
 .info-tbl td:first-child { font-size: 10px; color: #7a7268; width: 36%; }
 .info-tbl td:last-child { font-size: 11px; color: #1c1c1c; }
 .info-tbl tr:nth-child(even) { background: rgba(200,96,26,0.07); }
+
+/* 面料板块 */
+.fabric-block { position: relative; height: 260px; overflow: hidden; }
+.fabric-block img { position: absolute; top: 0; left: 0; width: 100%; height: 260px; object-fit: cover; object-position: center; transform: scale(1.3) translateY(-6%); transform-origin: center; display: block; }
+.fabric-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(20,15,10,0.52) 0%, rgba(20,15,10,0) 100%); padding: 16px 24px 20px; height: 105px; display: flex; flex-direction: column; justify-content: flex-end; }
 </style>
 </head>
 <body>
@@ -73,22 +78,17 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
   <div class="hero">
     <img src="img2.jpg">
     <div class="hero-overlay">
-      <span class="hero-tag">美型防滑抹胸</span>
+      <span class="hero-tag" style="font-size:19px;">美型防滑抹胸</span>
       <div class="hero-title">无感，但稳。<br>贴合，但聚。</div>
       <div class="hero-line"></div>
       <div class="hero-desc">跑跳拉伸，稳稳不移位<br>可拆卸肩带解锁7种穿法</div>
     </div>
   </div>
   <div class="ol"></div>
+
   <!-- 01 全幅 -->
   <div style="position:relative;height:460px;overflow:hidden;">
     <img src="img19.jpg" style="position:absolute;top:-80px;left:0;width:130%;height:130%;object-fit:cover;object-position:top;display:block;">
-    <div style="position:absolute;top:24px;right:24px;display:flex;flex-direction:column;align-items:center;gap:6px;">
-      <div style="width:90px;height:90px;border-radius:50%;overflow:hidden;border:1px solid #c8601a;">
-        <img src="img20.jpg" style="width:100%;height:100%;object-fit:cover;transform:scale(1.3) translateX(10%);transform-origin:center;">
-      </div>
-      <div style="font-size:11px;color:#1c1c1c;font-weight:600;letter-spacing:1px;text-align:center;">整片防滑内里</div>
-    </div>
     <div class="feature-full-overlay" style="height:38%;">
       <div class="fnum">01</div>
       <div class="ftitle-sm">动起来<br>也不跑</div>
@@ -98,6 +98,19 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
     </div>
   </div>
   <div class="ol"></div>
+
+  <!-- 面料科技板块 -->
+  <div class="fabric-block">
+    <img src="img20.jpg">
+    <div class="fabric-overlay">
+      <div style="font-size:11px;color:#c8601a;letter-spacing:3px;margin-bottom:8px;">悬浮氨纶内里</div>
+      <div style="width:24px;height:1px;background:#c8601a;margin-bottom:10px;flex-shrink:0;"></div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:4px;">上千个微小氨纶凸点，贴住皮肤却感受不到。</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;">不靠硅胶粘住你，靠结构稳住你。</div>
+    </div>
+  </div>
+  <div class="ol"></div>
+
   <!-- 02 文左图右 -->
   <div class="row">
     <div class="cell-txt left">
@@ -122,10 +135,11 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
       </div>
     </div>
   </div>
+
   <!-- 03 图左文右 -->
   <div class="row">
     <div class="cell-img-l">
-      <img class="real-img" src="img15.jpg" style="height:170px;object-position:center;transform:scale(2.0);transform-origin:center;">
+      <img class="real-img" src="img15-1.jpg" style="height:170px;object-position:center;transform:scale(2.3) translateY(8%);transform-origin:center;">
     </div>
     <div class="cell-txt">
       <div class="num">03</div>
@@ -135,6 +149,7 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
       <div class="gdata">侧收环绕模杯，<br>一体成型</div>
     </div>
   </div>
+
   <!-- 04 文左图右 -->
   <div class="row">
     <div class="cell-txt left">
@@ -153,6 +168,7 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
       </div>
     </div>
   </div>
+
   <!-- 05 图左文右 -->
   <div style="display:flex;border-bottom:none;">
     <div style="flex:0 0 55%;height:180px;overflow:hidden;border-right:1px solid #c8601a;position:relative;">
@@ -171,6 +187,7 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
     </div>
   </div>
   <div class="ol"></div>
+
   <!-- 06 全幅 -->
   <div class="feature-full">
     <img src="img17.jpg" style="object-position:top;">
@@ -183,6 +200,7 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
     </div>
   </div>
   <div class="ol"></div>
+
   <!-- 上身效果 -->
   <div class="sec">
     <span class="sec-tag">上身效果</span>
@@ -201,6 +219,7 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
     <img class="real-img" src="img14.jpg" style="height:480px;object-position:top;">
   </div>
   <div class="ol"></div>
+
   <!-- 颜色选择 -->
   <div class="sec">
     <span class="sec-tag">颜色选择</span>
@@ -230,6 +249,7 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
     </div>
   </div>
   <div class="ol"></div>
+
   <!-- 尺码 -->
   <div class="sec">
     <span class="sec-tag">尺码指南</span>
@@ -268,6 +288,7 @@ body { font-family: 'PingFang SC','Helvetica Neue',sans-serif; background: #ddd8
     <div class="tbl-note">* 丰胸体型建议大一码</div>
   </div>
   <div class="ol"></div>
+
   <!-- 基础信息 -->
   <div class="sec">
     <span class="sec-tag">产品详情</span>
